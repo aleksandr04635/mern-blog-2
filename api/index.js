@@ -11,7 +11,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB from "./db/db.js";
-connectDB();
+//connectDB();//for vercel deploy
+
 /* mongoose
   .connect(process.env.MONGO)
   .then(() => {

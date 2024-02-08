@@ -2,8 +2,10 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+import connectDB from "../db/db.js";
 
 export const signup = async (req, res, next) => {
+  connectDB();
   const { username, email, password } = req.body;
 
   if (
@@ -31,6 +33,7 @@ export const signup = async (req, res, next) => {
 };
 
 export const signin = async (req, res, next) => {
+  connectDB();
   const { email, password } = req.body;
   if (!email || !password || email === "" || password === "") {
     next(errorHandler(400, "All fields are required"));
@@ -61,6 +64,7 @@ export const signin = async (req, res, next) => {
 };
 
 export const google = async (req, res, next) => {
+  connectDB();
   const { email, name, googlePhotoUrl } = req.body;
   try {
     const user = await User.findOne({ email });

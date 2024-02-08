@@ -2,6 +2,7 @@ import Post from "../models/post.model.js";
 import { errorHandler } from "../utils/error.js";
 
 export const create = async (req, res, next) => {
+  connectDB();
   /*   if (!req.user.isAdmin) {
     return next(errorHandler(403, "You are not allowed to create a post"));
   } */
@@ -27,6 +28,7 @@ export const create = async (req, res, next) => {
 };
 
 export const getposts = async (req, res, next) => {
+  connectDB();
   try {
     const startIndex = parseInt(req.query.startIndex) || 0; //by default starts from 0
     const limit = parseInt(req.query.limit) || 9; //by default takes 9
@@ -74,6 +76,7 @@ export const getposts = async (req, res, next) => {
 };
 
 export const deletepost = async (req, res, next) => {
+  connectDB();
   if (!req.user.isAdmin && req.user.id !== req.params.userId) {
     return next(errorHandler(403, "You are not allowed to delete this post"));
   }
@@ -86,6 +89,7 @@ export const deletepost = async (req, res, next) => {
 };
 
 export const updatepost = async (req, res, next) => {
+  connectDB();
   /*   console.log("req.user.id: ", req.user.id);
   console.log("req.params.userId: ", req.params.userId);
   console.log(
