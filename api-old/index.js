@@ -10,16 +10,7 @@ import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log(
-      "database is connected successfully to " + process.env.MONGO_URL
-    );
-  } catch (err) {
-    console.log(err);
-  }
-};
+import connectDB from "./db/db.js";
 //connectDB();//for vercel deploy
 
 /* mongoose
