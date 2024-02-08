@@ -13,3 +13,8 @@ with Gooogle OAuth auth via firebase and firebase user avatar and post image upl
 avatar image uploading to firebase 
 Circular progresbar
 https://www.npmjs.com/package/react-circular-progressbar
+don't forget to add domains to firebase configuration here
+https://console.firebase.google.com/project/mern-blog-1c1f6/authentication/settings
+deployed to 
+https://mern-blog-2-khaki.vercel.app/
+

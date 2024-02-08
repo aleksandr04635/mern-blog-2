@@ -1,19 +1,7 @@
 import express from "express";
-import { verifyToken } from "../utils/verifyUser.js";
+import { connectDB, verifyToken } from "../utils/utils.js";
 
 import Comment from "../models/comment.model.js";
-
-import mongoose from "mongoose";
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log(
-      "database is connected successfully to " + process.env.MONGO_URL
-    );
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const createComment = async (req, res, next) => {
   connectDB();
@@ -147,7 +135,6 @@ const getcomments = async (req, res, next) => {
 };
 
 const router = express.Router();
-
 router.post("/create", verifyToken, createComment);
 router.get("/getPostComments/:postId", getPostComments);
 router.put("/likeComment/:commentId", verifyToken, likeComment);

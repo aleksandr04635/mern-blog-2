@@ -1,22 +1,7 @@
 import express from "express";
-
-import { verifyToken } from "../utils/verifyUser.js";
-
 import bcryptjs from "bcryptjs";
-import { errorHandler } from "../utils/error.js";
+import { connectDB, verifyToken, errorHandler } from "../utils/utils.js";
 import User from "../models/user.model.js";
-
-import mongoose from "mongoose";
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log(
-      "database is connected successfully to " + process.env.MONGO_URL
-    );
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const test = (req, res) => {
   res.json({ message: "API is working!" });
